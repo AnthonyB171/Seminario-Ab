@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@ionic/angular": "^8.6.4",
+    "swiper": "^11.2.10"
+  }
+}
