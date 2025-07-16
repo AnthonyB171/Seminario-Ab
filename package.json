@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "Seminario-Ab",
   "version": "0.0.1",
   "author": "Ionic Framework",
@@ -61,4 +62,10 @@
     "typescript": "~5.8.0"
   },
   "description": "An Ionic project"
+=======
+  "dependencies": {
+    "@ionic/angular": "^8.6.4",
+    "swiper": "^11.2.10"
+  }
+>>>>>>> b5e40dc77d6ae3d555a74d0299b93122d5b1fa58
 }
