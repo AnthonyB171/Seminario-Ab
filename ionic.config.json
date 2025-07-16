@@ -1,0 +1,7 @@
+{
+  "name": "Seminario-Ab",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
