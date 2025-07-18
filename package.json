@@ -1,6 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "Seminario-Ab",
+  "name": "seminario-ab",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -27,9 +26,10 @@
     "@capacitor/haptics": "7.0.1",
     "@capacitor/keyboard": "7.0.1",
     "@capacitor/status-bar": "7.0.1",
-    "@ionic/angular": "^8.0.0",
+    "@ionic/angular": "^8.6.4",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
+    "swiper": "^11.2.10",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
@@ -62,10 +62,4 @@
     "typescript": "~5.8.0"
   },
   "description": "An Ionic project"
-=======
-  "dependencies": {
-    "@ionic/angular": "^8.6.4",
-    "swiper": "^11.2.10"
-  }
->>>>>>> b5e40dc77d6ae3d555a74d0299b93122d5b1fa58
 }
