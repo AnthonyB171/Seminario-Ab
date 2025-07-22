@@ -1,27 +1,74 @@
-#container {
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+:root {
+  --color-claro: #d79d3f;        /* Color claro pastel */
+  --color-oscuro: #fc7e00;       /* Naranja fuerte */
+  --espaciado-base: 1rem;        /* Espaciado estándar */
+  --espaciado-grande: 2rem;      /* Espaciado mayor */
+}
+
+// Estilo general del carrusel
+swiper {
+  height: 100%;
+}
+
+// Estilo individual para cada slide
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+// Caja de texto centrada con fondo oscuro transparente
+.text-box {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 25px;
+  border-radius: 12px;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  max-width: 90%;
+  animation: fadeIn 1s ease-in-out;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.text-box h2 {
+  color: #f2ce05; // amarillo brillante
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px #000;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.text-box p {
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  text-shadow: 1px 1px 3px #000;
 }
 
-#container a {
-  text-decoration: none;
+// Estilos adicionales para Swiper botones (si los activas)
+.swiper-button-prev,
+.swiper-button-next {
+  color: #f2ce05;
+}
+
+// Animación de entrada
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Botón de prueba
+.button {
+  background-color: var(--color-acento);
+  padding: var(--espaciado-base);
 }

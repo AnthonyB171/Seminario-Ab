@@ -1,2 +1,9 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+:root {
+  --color-claro: #d79d3f;        /* Color claro pastel */
+  --color-oscuro: #fc7e00;       /* Naranja fuerte */
+  --espaciado-base: 1rem;        /* Espaciado estándar */
+  --espaciado-grande: 2rem;      /* Espaciado mayor */
+}
+
