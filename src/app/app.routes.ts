@@ -1,17 +1,18 @@
 import { Routes } from '@angular/router';
+import { IntroGuard } from './guard/intro.guard';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    path: '',
+    canActivate: [IntroGuard], // proteger la raíz
+    loadComponent: () => import('./home/home.page').then(m => m.HomePage),
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    path: 'home',
+    loadComponent: () => import('./home/home.page').then(m => m.HomePage),
   },
   {
     path: 'intro',
-    loadComponent: () => import('./intro/intro.page').then( m => m.IntroPage)
+    loadComponent: () => import('./intro/intro.page').then(m => m.IntroPage),
   },
 ];

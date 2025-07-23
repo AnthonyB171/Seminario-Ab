@@ -8,58 +8,63 @@
 
 <ion-content>
 
-<swiper-container
-  pagination="true"
-  loop="true"
-  slides-per-view="1"
-  navigation="true"
-  style="width: 100%; height: 100%;"
->
-  <ng-container *ngFor="let genero of genres">
-    <swiper-slide>
-      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px;">
-        <img [src]="genero.Image"
-             [alt]="genero.Title"
-             style="width: 250px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" />
-        <h2 style="margin-top: 20px; font-size: 2em;">{{ genero.Title.toUpperCase() }}</h2>
-        <p style="text-align: center; font-size: 1.1em;">
-          {{ genero.description }}
-        </p>
-      </div>
-    </swiper-slide>
-  </ng-container>
-</swiper-container>
+  <swiper-container
+    pagination="true"
+    loop="true"
+    slides-per-view="1"
+    navigation="true"
+    style="width: 100%; height: 100%;"
+  >
+    <ng-container *ngFor="let genero of genres">
+      <swiper-slide>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px;">
+          <img [src]="genero.Image"
+               [alt]="genero.Title"
+               style="width: 250px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" />
+          <h2 style="margin-top: 20px; font-size: 2em;">{{ genero.Title.toUpperCase() }}</h2>
+          <p style="text-align: center; font-size: 1.1em;">
+            {{ genero.description }}
+          </p>
+        </div>
+      </swiper-slide>
+    </ng-container>
+  </swiper-container>
 
-<!-- TAREA AGREGADA -->
-<div [style.backgroundColor]="coloractual">
-  Hola Mundo 
-</div>
-
-<ion-button (click)="cambiarcolor()">
-  Cambiar Tema
-</ion-button>
-
-<ion-card class="bg-card-test">
-  <ion-card-header>
-    <ion-card-title>Card Title</ion-card-title>
-    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-  </ion-card-header>
-
-  <ion-card-content>
-    Here's a small text description for the card content. Nothing more, nothing less.
-  </ion-card-content>
-</ion-card>
-
-<!-- Demo de Storage -->
-<div>
-  <h3>Demo Ionic Storage</h3>
+  <!-- TEMA -->
   <div [style.backgroundColor]="coloractual">
-    <p>Team Actual: {{ coloractual === coloroscuro ? 'Oscuro' : 'Claro' }}</p>
+    Hola Mundo 
   </div>
-</div>
 
-<div>
-  <ion-button (click)="cambiarcolor()">Cambiar tema y guardar</ion-button>
-</div>
+  <ion-button (click)="cambiarcolor()">
+    Cambiar Tema
+  </ion-button>
+
+  <!-- NUEVO BOTÓN PARA IR A LA INTRO -->
+  <ion-button expand="block" color="primary" (click)="irAIntro()">
+    Ver Introducción
+  </ion-button>
+
+  <ion-card class="bg-card-test">
+    <ion-card-header>
+      <ion-card-title>Card Title</ion-card-title>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Demo de Storage -->
+  <div>
+    <h3>Demo Ionic Storage</h3>
+    <div [style.backgroundColor]="coloractual">
+      <p>Tema Actual: {{ coloractual === coloroscuro ? 'Oscuro' : 'Claro' }}</p>
+    </div>
+  </div>
+
+  <div>
+    <ion-button (click)="cambiarcolor()">Cambiar tema y guardar</ion-button>
+  </div>
 
 </ion-content>
