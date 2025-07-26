@@ -51,7 +51,7 @@ export class LoginPage implements OnInit {
     this.authService.loginUser(credentials).then(res => {
       console.log(res);
       // Redirigir al home después del login exitoso
-      this.router.navigate(['/home']);
+      this.router.navigate(['menu/home']);
     }).catch(err => {
       console.error('Error de login:', err);
       // Aquí puedes manejar errores (mostrar alertas, etc.)

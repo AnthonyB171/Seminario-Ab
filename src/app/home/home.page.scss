@@ -36,14 +36,14 @@ swiper {
 }
 
 .text-box h2 {
-  color: #f2ce05; // amarillo brillante
+  color: #000000; // amarillo brillante
   font-size: 2.2rem;
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px #000;
 }
 
 .text-box p {
-  color: #ffffff;
+  color: #d44040;
   font-size: 1.1rem;
   line-height: 1.5;
   text-shadow: 1px 1px 3px #000;
@@ -71,4 +71,19 @@ swiper {
 .button {
   background-color: var(--color-acento);
   padding: var(--espaciado-base);
+}
+menu-button {
+  color: var(--color-claro);
+}
+ion-title {
+  color: var(--color-claro);
+}
+ion-toolbar {
+  background-color: var(--color-oscuro);     
+
+  color: var(--color-claro);
+}
+ion-header {
+  background-color: var(--color-oscuro);
+  color: var(--color-claro);
 }

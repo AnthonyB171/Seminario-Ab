@@ -5,7 +5,7 @@ import { AuthGuard } from './guards/auth.guard';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'menu/home',
     pathMatch: 'full'
   },
   {
@@ -18,12 +18,18 @@ export const routes: Routes = [
     canActivate: [IntroGuard]
   },
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then(m => m.HomePage),
-    canActivate: [AuthGuard]
+    path: 'registro',
+    loadComponent: () => import('./pages/registro/registro.page').then(m => m.RegistroPage)
   },
   {
-    path: 'registro',
-    loadComponent: () => import('./pages/registro/registro.page').then( m => m.RegistroPage)
+    path: 'menu',
+    loadComponent: () => import('./menu/menu.page').then(m => m.MenuPage),
+    children: [
+      {
+        path: 'home',
+        loadComponent: () => import('./home/home.page').then(m => m.HomePage),
+        canActivate: [IntroGuard]
+      }
+    ]
   }
 ];

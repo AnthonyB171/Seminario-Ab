@@ -1,0 +1,34 @@
+.custom-menu-button {
+  color: rgb(0, 0, 0);
+  background-color: var(--ion-color-primary);
+  border-radius: 12px;
+  padding: 6px 12px;
+  margin: 12px;
+}
+.ion-menu-button {
+  --background: var(--ion-color-primary);
+  --color: rgb(0, 0, 0);
+  --border-radius: 12px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+}
+.ver-intro ion-icon {
+  color: yellow;
+}
+.ion-menu-button {
+  --background: var(--ion-color-primary);
+  --color: rgb(0, 0, 0);
+  --border-radius: 12px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+}
+  
+.cerrar-sesion {
+  --background: #f44336; // rojo
+  --color: white;
+}
+
+.ver-intro {
+  --background: #2196f3; // azul
+  --color: white;
+}

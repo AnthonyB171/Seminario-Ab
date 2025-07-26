@@ -3,6 +3,9 @@
     <ion-title>
       Inicio
     </ion-title>
+    <ion-buttons slot="end">
+  <ion-menu-button></ion-menu-button>
+</ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -32,18 +35,8 @@
 
   <!-- TEMA -->
   <div [style.backgroundColor]="coloractual">
-    Hola Mundo 
+    Lo Mejor De Lo Mjeor 
   </div>
-
-  <ion-button (click)="cambiarcolor()">
-    Cambiar Tema
-  </ion-button>
-
-  <!-- NUEVO BOTÓN PARA IR A LA INTRO -->
-  <ion-button expand="block" color="primary" (click)="irAIntro()">
-    Ver Introducción
-  </ion-button>
-
   <ion-card class="bg-card-test">
     <ion-card-header>
       <ion-card-title>Card Title</ion-card-title>
@@ -65,10 +58,6 @@
 
   <div>
     <ion-button (click)="cambiarcolor()">Cambiar tema y guardar</ion-button>
-    <ion-button expand="block" color="danger" (click)="CerrarSesion()">
-  Cerrar Sesión
-</ion-button>
-
   </div>
 
   
