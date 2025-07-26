@@ -82,4 +82,8 @@ export class HomePage implements OnInit {
   irAIntro() {
     this.router.navigateByUrl('/intro');
   }
+  CerrarSesion() {
+    this.router.navigateByUrl('/login', { replaceUrl: true });
+}
+
 }

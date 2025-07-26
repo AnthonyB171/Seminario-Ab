@@ -46,7 +46,16 @@
         </div>
       </div>
     </div>
-
+    <ion-button fill="clear" size="small" (click)="goToRecover()">¿Olvidaste tu contraseña?</ion-button>
     <ion-button expand="block" type="submit" [disabled]="loginForm.invalid">Ingresar</ion-button>
+
+    <ion-text class="ion-text-center">
+  <p>¿No tienes una cuenta?</p>
+</ion-text>
+
+<ion-button expand="block" fill="clear" (click)="goToRegistro()">
+  Crear cuenta
+</ion-button>
+
   </form>
 </ion-content>
