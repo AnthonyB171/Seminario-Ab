@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
 import { StorageService } from '../services/storage.service';
 import { Router } from '@angular/router';
+import { MusicService } from '../services/music.service';
 
 @Component({
   selector: 'app-home',
@@ -42,20 +42,23 @@ export class HomePage implements OnInit {
     }
   ];
 
+  tracks: any;
+  albums: any;
+  localArtists: any;
+
   constructor(
     private storageService: StorageService,
+    private musicService: MusicService,
     private router: Router
   ) {}
 
   async ngOnInit() {
+    this.loadAlbums();
+    this.loadTracks();
+    this.getlocalArtists();
     await this.loadStorageData();
     this.simularCargaDatos();
-  }
-
-  async cambiarcolor() {
-    this.coloractual = this.coloractual === this.coloroscuro ? this.colorclaro : this.coloroscuro;
-    await this.storageService.set('theme', this.coloractual);
-    console.log('Tema guardado:', this.coloractual);
+  
   }
 
   async loadStorageData() {
@@ -79,4 +82,32 @@ export class HomePage implements OnInit {
     });
   }
 
+  async loadTracks() {
+    try {
+      this.tracks = await this.musicService.getTracks();
+      console.log(this.tracks, "las canciones");
+    } catch (error) {
+      console.error('Error al cargar las canciones:', error);
+    }
+  }
+
+  async loadAlbums() {
+    try {
+      this.albums = await this.musicService.getalbums();
+      console.log(this.albums, "los albums");
+    } catch (error) {
+      console.error('Error al cargar los albums:', error);
+    }
+  }
+
+  async cambiarcolor() {
+    this.coloractual = this.coloractual === this.coloroscuro ? this.colorclaro : this.coloroscuro;
+    await this.storageService.set('theme', this.coloractual);
+    console.log('Tema guardado:', this.coloractual);
+  }
+
+  getlocalArtists() {
+    this.localArtists = this.musicService.getlocalArtists();
+    console.log(this.localArtists, "los artistas locales");
+  }
 }
