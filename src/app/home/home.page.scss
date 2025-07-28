@@ -1,89 +1,148 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
 :root {
-  --color-claro: #d79d3f;        /* Color claro pastel */
-  --color-oscuro: #fc7e00;       /* Naranja fuerte */
-  --espaciado-base: 1rem;        /* Espaciado estándar */
-  --espaciado-grande: 2rem;      /* Espaciado mayor */
+  --color-azul: #0b0c1e;       /* Azul oscuro profundo (por defecto) */
+  --color-blanco: #ffffff;     /* Fondo claro */
+  --color-acento: #ffca28;
+  --texto-oscuro: #1a1a1a;
+  --texto-claro: #ffffff;
 }
 
-// Estilo general del carrusel
+
+/* ========================
+   General - Tema dinámico
+=========================== */
+body {
+  background-color: var(--color-claro);
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.3s ease;
+}
+
+ion-header, ion-toolbar {
+  background-color: var(--color-oscuro);
+  color: var(--texto-claro);
+}
+
+ion-title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: var(--texto-claro);
+}
+
+ion-menu-button, ion-button, ion-icon {
+  color: var(--texto-claro);
+}
+
+/* ========================
+   Swiper estilizado
+=========================== */
 swiper {
-  height: 100%;
-}
-
-// Estilo individual para cada slide
-.slide {
   width: 100%;
-  height: 100%;
+  height: auto;
+  margin-top: 1rem;
+}
+
+swiper-slide {
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 100px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
+  align-items: center;
+  padding: 0.5rem;
+  transition: transform 0.3s ease-in-out;
 }
 
-// Caja de texto centrada con fondo oscuro transparente
-.text-box {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 25px;
-  border-radius: 12px;
+swiper-slide:hover {
+  transform: scale(1.02);
+}
+
+.album-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  transition: box-shadow 0.3s ease;
+}
+
+.album-card:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.album-img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.album-info {
+  padding: 0.75rem;
   text-align: center;
-  max-width: 90%;
-  animation: fadeIn 1s ease-in-out;
+  color: var(--texto-oscuro);
 }
 
-.text-box h2 {
-  color: #000000; // amarillo brillante
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 4px #000;
-}
-
-.text-box p {
-  color: #d44040;
+.album-info h3 {
   font-size: 1.1rem;
-  line-height: 1.5;
-  text-shadow: 1px 1px 3px #000;
+  margin: 0;
+  font-weight: 600;
 }
 
-// Estilos adicionales para Swiper botones (si los activas)
-.swiper-button-prev,
-.swiper-button-next {
-  color: #f2ce05;
-}
-
-// Animación de entrada
-@keyframes fadeIn {
-  0% {
+/* ========================
+   Animaciones y botones
+=========================== */
+@keyframes fadeInUp {
+  from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-// Botón de prueba
-.button {
-  background-color: var(--color-acento);
-  padding: var(--espaciado-base);
+.fade-in {
+  animation: fadeInUp 0.5s ease-in-out;
 }
-menu-button {
-  color: var(--color-claro);
-}
-ion-title {
-  color: var(--color-claro);
-}
-ion-toolbar {
-  background-color: var(--color-oscuro);     
 
-  color: var(--color-claro);
+ion-fab-button {
+  --background: var(--color-acento);
+  color: var(--texto-oscuro);
 }
-ion-header {
-  background-color: var(--color-oscuro);
-  color: var(--color-claro);
+
+/* ========================
+   Texto de Slide/Descripción
+=========================== */
+.text-box {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: var(--texto-claro);
+  text-align: center;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.text-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.text-box p {
+  font-size: 1rem;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* ========================
+   Accesibilidad/Responsividad
+=========================== */
+@media (max-width: 600px) {
+  .album-card {
+    width: 95%;
+  }
+
+  .album-img {
+    height: 140px;
+  }
+
+  .album-info h3 {
+    font-size: 1rem;
+  }
 }

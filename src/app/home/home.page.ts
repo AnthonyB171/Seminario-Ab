@@ -110,4 +110,17 @@ export class HomePage implements OnInit {
     this.localArtists = this.musicService.getlocalArtists();
     console.log(this.localArtists, "los artistas locales");
   }
+   async showSongs(albumId: string): Promise<void> {
+  console.log('Album ID:', albumId);
+  try {
+    const songs = await this.musicService.getsongsByAlbum(albumId);
+    console.log('Canciones del álbum:', songs);
+    // Aquí puedes abrir un modal o redirigir, según lo que quieras hacer
+  } catch (error) {
+    console.error('Error al obtener canciones del álbum:', error);
+  }
+}
+
+
+
 }
