@@ -14,12 +14,13 @@
     </ion-button>
   </div>
 
+  <!-- Álbumes en Swiper -->
   <swiper-container 
     pagination="true" 
     loop="true" 
     slides-per-view="2" 
     space-between="16"
-    style="padding: 0 16px;"
+    style="padding: 0 16px; margin-bottom: 24px;"
   >
     <swiper-slide *ngFor="let album of albums" (click)="showSongs(album.id)">
       <div class="slide-content" style="background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 12px; text-align: center;">
@@ -28,3 +29,26 @@
         <p style="margin-top: 10px; font-weight: 500; color: #333;">{{ album.name }}</p>
       </div>
     </swiper-slide>
+  </swiper-container>
+
+  <!-- Lista de artistas -->
+  <ion-list>
+    <ion-list-header>
+      <ion-label>🎤 Artistas</ion-label>
+    </ion-list-header>
+
+    <ion-item
+      *ngFor="let artist of remoteArtists"
+      button
+      (click)="goToArtistSongs(artist.id)"
+    >
+      <ion-avatar slot="start">
+        <img [src]="artist.image || 'assets/default-artist.png'" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ artist.name }}</h2>
+        <p>{{ artist.genre }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

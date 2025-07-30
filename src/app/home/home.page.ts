@@ -23,8 +23,8 @@ export class HomePage implements OnInit {
   tracks: any;
   albums: any;
   localArtists: any;
-  song: any;
-
+  remoteArtists: any;
+  tracksByArtist: any;
   songs: any;
   isLoading = false;
 
@@ -41,10 +41,10 @@ export class HomePage implements OnInit {
 
     await this.loadStorageData();
     await this.simularCargaDatos();
-
     await this.loadAlbums();
     await this.loadTracks();
     this.getlocalArtists();
+    await this.loadRemoteArtists();
 
     this.isLoading = false;
   }
@@ -97,7 +97,6 @@ export class HomePage implements OnInit {
   async showSongs(albumId: string): Promise<void> {
     try {
       console.log('albumId:', albumId);
-
       this.songs = await this.musicService.getsongsByAlbum(albumId);
       console.log('Canciones obtenidas:', this.songs);
 
@@ -113,6 +112,35 @@ export class HomePage implements OnInit {
       console.log('Modal presentado correctamente ✅');
     } catch (error) {
       console.error('Error al obtener canciones del álbum:', error);
+    }
+  }
+
+  async loadRemoteArtists() {
+    try {
+      this.remoteArtists = await this.musicService.getArtists();
+      console.log('Artistas del servidor:', this.remoteArtists);
+    } catch (error) {
+      console.error('Error al cargar artistas remotos:', error);
+    }
+  }
+
+  async goToArtistSongs(artistId: string): Promise<void> {
+    try {
+      const songs = await this.musicService.getTracksByArtist(artistId);
+      console.log(`Canciones del artista ${artistId}:`, songs);
+
+      const modal = await this.modalController.create({
+        component: SongsmodalPage,
+        componentProps: {
+          songs,
+          albumId: artistId
+        },
+      });
+
+      await modal.present();
+      console.log('Modal de canciones del artista presentado ✅');
+    } catch (error) {
+      console.error('Error al mostrar canciones del artista:', error);
     }
   }
 }

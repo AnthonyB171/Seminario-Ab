@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Canciones del Artista</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="songs.length > 0; else noSongs">
+    <ion-item *ngFor="let song of songs">
+      <ion-label>
+        <h2>{{ song.title }}</h2>
+        <p>{{ song.duration }} segundos</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noSongs>
+    <ion-item lines="none">
+      <ion-label color="medium">
+        No hay canciones disponibles para este artista.
+      </ion-label>
+    </ion-item>
+  </ng-template>
+</ion-content>
