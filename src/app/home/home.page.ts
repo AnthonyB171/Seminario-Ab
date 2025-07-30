@@ -15,7 +15,12 @@ import { SongsmodalPage } from '../songsmodal/songsmodal.page';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePage implements OnInit {
-  song: { name: string } | null = null;
+  song: {
+    audioUrl: string;
+    name: string;
+    playing: boolean;
+  } | null = null;
+
   colorclaro = 'var(--color-claro)';
   coloroscuro = 'var(--color-oscuro)';
   coloractual = this.coloroscuro;
@@ -27,10 +32,11 @@ export class HomePage implements OnInit {
   remoteArtists: any;
   tracksByArtist: any;
   songs: any;
-  name= '';
-  playing: false | undefined
+  name = '';
+  playing!: false;
   isLoading = false;
-  
+
+  currentsong: HTMLAudioElement = new Audio();
 
   constructor(
     private storageService: StorageService,
@@ -62,16 +68,13 @@ export class HomePage implements OnInit {
   }
 
   async simularCargaDatos() {
-    console.log('Iniciando simulación de datos...');
     const data = await this.obtenerDatosSimulados();
     console.log('Datos simulados:', data);
   }
 
   obtenerDatosSimulados() {
     return new Promise((resolve) => {
-      console.log('Esperando 1.5 segundos para simular...');
       setTimeout(() => {
-        console.log('Resolviendo datos simulados...');
         resolve(['Rock', 'Pop', 'Jazz']);
       }, 1500);
     });
@@ -100,12 +103,17 @@ export class HomePage implements OnInit {
 
   async showSongs(albumId: string): Promise<void> {
     try {
-      console.log('albumId:', albumId);
       this.songs = await this.musicService.getsongsByAlbum(albumId);
       console.log('Canciones obtenidas:', this.songs);
 
-      // Mostrar la primera canción en el footer
-      this.song = this.songs?.[0] || null;
+      // Asegura que las canciones tengan audioUrl
+      if (this.songs.length > 0) {
+        this.song = {
+          name: this.songs[0].name,
+          audioUrl: `assets/music/${this.songs[0].filename || 'micancion.mp3'}`,
+          playing: false
+        };
+      }
 
       const modal = await this.modalController.create({
         component: SongsmodalPage,
@@ -116,7 +124,6 @@ export class HomePage implements OnInit {
       });
 
       await modal.present();
-      console.log('Modal presentado correctamente ✅');
     } catch (error) {
       console.error('Error al obtener canciones del álbum:', error);
     }
@@ -136,8 +143,13 @@ export class HomePage implements OnInit {
       const songs = await this.musicService.getTracksByArtist(artistId);
       console.log(`Canciones del artista ${artistId}:`, songs);
 
-      // Mostrar la primera canción del artista en el footer
-      this.song = songs?.[0] || null;
+      if (songs.length > 0) {
+        this.song = {
+          name: songs[0].name,
+          audioUrl: `assets/music/${songs[0].filename || 'micancion.mp3'}`,
+          playing: false
+        };
+      }
 
       const modal = await this.modalController.create({
         component: SongsmodalPage,
@@ -148,9 +160,29 @@ export class HomePage implements OnInit {
       });
 
       await modal.present();
-      console.log('Modal de canciones del artista presentado ✅');
     } catch (error) {
       console.error('Error al mostrar canciones del artista:', error);
+    }
+  }
+
+  play() {
+    if (this.song) {
+      this.currentsong.src = this.song.audioUrl;
+      this.currentsong.load();
+      this.currentsong.play()
+        .then(() => {
+          this.song!.playing = true;
+        })
+        .catch((error) => {
+          console.error('Error al reproducir la canción:', error);
+        });
+    }
+  }
+
+  pause() {
+    this.currentsong.pause();
+    if (this.song) {
+      this.song.playing = false;
     }
   }
 }

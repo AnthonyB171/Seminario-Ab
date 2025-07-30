@@ -1,71 +1,76 @@
-{"artists": [
-  {
-    "nombre": "Luna Rivera",
-    "genero": "Pop",
-    "pais": "Colombia",
-    "anios_activo": "2012 - presente",
-    "albumes": [
-      {
-        "titulo": "Luz de Luna",
-        "anio": 2014
-      },
-      {
-        "titulo": "Ecos del Alma",
-        "anio": 2018
-      }
-    ]
-  },
-  {
-    "nombre": "DJ Neón",
-    "genero": "Electrónica",
-    "pais": "España",
-    "anios_activo": "2010 - presente",
-    "albumes": [
-      {
-        "titulo": "Ritmo Futuro",
-        "anio": 2013
-      },
-      {
-        "titulo": "Conexión Digital",
-        "anio": 2017
-      }
-    ]
-  },
-  {
-    "nombre": "Sombra Rebelde",
-    "genero": "Rock",
-    "pais": "México",
-    "anios_activo": "2005 - 2020",
-    "albumes": [
-      {
-        "titulo": "A Través del Caos",
-        "anio": 2007
-      },
-      {
-        "titulo": "Resistencia",
-        "anio": 2012
-      },
-      {
-        "titulo": "Despedida",
-        "anio": 2020
-      }
-    ]
-  },
-  {
-    "nombre": "Carmen Beat",
-    "genero": "Reggaetón",
-    "pais": "Puerto Rico",
-    "anios_activo": "2015 - presente",
-    "albumes": [
-      {
-        "titulo": "Latina Fuego",
-        "anio": 2016
-      },
-      {
-        "titulo": "Reina del Ritmo",
-        "anio": 2019
-      }
-    ]
-  }
-]
+{
+  "artists": [
+    {
+      "name": "Luna Rivera",
+      "genre": "Pop",
+      "country": "Colombia",
+      "yearsActive": "2012 - presente",
+      "image": "assets/artists/luna.jpg",
+      "albums": [
+        {
+          "title": "Luz de Luna",
+          "year": 2014
+        },
+        {
+          "title": "Ecos del Alma",
+          "year": 2018
+        }
+      ]
+    },
+    {
+      "name": "DJ Neón",
+      "genre": "Electrónica",
+      "country": "España",
+      "yearsActive": "2010 - presente",
+      "image": "assets/artists/djneon.jpg",
+      "albums": [
+        {
+          "title": "Ritmo Futuro",
+          "year": 2013
+        },
+        {
+          "title": "Conexión Digital",
+          "year": 2017
+        }
+      ]
+    },
+    {
+      "name": "Sombra Rebelde",
+      "genre": "Rock",
+      "country": "México",
+      "yearsActive": "2005 - 2020",
+      "image": "assets/artists/sombra.jpg",
+      "albums": [
+        {
+          "title": "A Través del Caos",
+          "year": 2007
+        },
+        {
+          "title": "Resistencia",
+          "year": 2012
+        },
+        {
+          "title": "Despedida",
+          "year": 2020
+        }
+      ]
+    },
+    {
+      "name": "Carmen Beat",
+      "genre": "Reggaetón",
+      "country": "Puerto Rico",
+      "yearsActive": "2015 - presente",
+      "image": "assets/artists/carmen.jpg",
+      "albums": [
+        {
+          "title": "Latina Fuego",
+          "year": 2016
+        },
+        {
+          "title": "Reina del Ritmo",
+          "year": 2019
+        }
+      ]
+    }
+  ]
 }
