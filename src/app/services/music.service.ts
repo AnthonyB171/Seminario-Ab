@@ -5,9 +5,6 @@ import dataArtists from './artistas.json';
   providedIn: 'root'
 })
 export class MusicService {
-  getsongsbyalbum(albumId: string) {
-    throw new Error('Method not implemented.');
-  }
   urlServer = "https://music.fly.dev";
 
   constructor() {}
@@ -24,17 +21,20 @@ export class MusicService {
         return [];
       });
   }
+
   getalbums() {
     return fetch(`${this.urlServer}/albums`)
-      .then(response => response.json())
+      .then(response => response.json());
   }
+
   getlocalArtists() {
     return dataArtists;
   }
+
   getsongsByAlbum(albumId: string) {
     return fetch(`${this.urlServer}/tracks/album/${albumId}`)
-      .then(response => response.json()
-    );
+      .then(response => response.json());
+  }
 }
 
- }
+  

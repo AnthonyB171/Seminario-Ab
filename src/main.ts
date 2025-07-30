@@ -10,6 +10,10 @@ import { Storage } from '@ionic/storage-angular';
 import { addIcons } from 'ionicons';
 import * as allIcons from 'ionicons/icons';
 
+import { register } from 'swiper/element/bundle';
+register();
+
+
 addIcons(allIcons);
 
 bootstrapApplication(AppComponent, {

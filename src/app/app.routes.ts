@@ -31,5 +31,12 @@ export const routes: Routes = [
         canActivate: [IntroGuard]
       }
     ]
-  }
+  },
+  
+     {
+  path: 'songsmodal',
+  loadComponent: () =>
+    import('./songsmodal/songsmodal.page').then(m => m.SongsmodalPage)
+}
+
 ];

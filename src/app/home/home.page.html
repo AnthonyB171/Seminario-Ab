@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar style="--background-color: {{ coloractual }}; --background: {{ coloractual }};">
+  <ion-toolbar [style.background]="coloractual">
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="--background-color: {{ coloractual }}; --background: {{ coloractual }};">
+<ion-content [style.background]="coloractual">
   <div style="display: flex; justify-content: flex-end; padding: 10px;">
     <ion-button fill="clear" (click)="cambiarcolor()" style="color: white;">
       <ion-icon name="contrast-outline" slot="icon-only"></ion-icon>
@@ -28,5 +28,3 @@
         <p style="margin-top: 10px; font-weight: 500; color: #333;">{{ album.name }}</p>
       </div>
     </swiper-slide>
-  </swiper-container>
-</ion-content>
