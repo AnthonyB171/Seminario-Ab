@@ -27,7 +27,10 @@ export class HomePage implements OnInit {
   remoteArtists: any;
   tracksByArtist: any;
   songs: any;
+  name= '';
+  playing: false | undefined
   isLoading = false;
+  
 
   constructor(
     private storageService: StorageService,
