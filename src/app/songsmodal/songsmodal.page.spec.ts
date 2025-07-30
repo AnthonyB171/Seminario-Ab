@@ -1,20 +1,33 @@
-import { Component, Input } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SongsmodalPage } from './songsmodal.page';
+import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { IonicModule, ModalController } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-@Component({
-  selector: 'app-songsmodal',
-  templateUrl: './songsmodal.page.html',
-  styleUrls: ['./songsmodal.page.scss'],
-  standalone: true,
-  imports: [CommonModule, IonicModule]
-})
-export class SongsmodalPage {
-  @Input() songs: any;
+describe('SongsmodalPage', () => {
+  let component: SongsmodalPage;
+  let fixture: ComponentFixture<SongsmodalPage>;
 
-  constructor(private modalController: ModalController) {}
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [
+        IonicModule.forRoot(),
+        CommonModule,
+        FormsModule,
+        SongsmodalPage // Importa el componente standalone
+      ],
+      providers: [
+        provideAnimations() // Por si el componente usa animaciones
+      ]
+    }).compileComponents();
 
-  dismiss() {
-    this.modalController.dismiss();
-  }
-}
+    fixture = TestBed.createComponent(SongsmodalPage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

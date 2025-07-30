@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IonicModule, ModalController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, IonicModule],
   selector: 'app-songsmodal',
   templateUrl: './songsmodal.page.html',
   styleUrls: ['./songsmodal.page.scss'],
-  standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class SongsmodalPage implements OnInit {
+export class SongsmodalPage {
+  @Input() songs: any[] = [];
 
-  constructor() { }
-
+  constructor(private modalCtrl: ModalController) {}
   ngOnInit() {
+    console.log('🎵 Modal iniciado');
+    console.log('albumId recibido:', this.albumId);
+    console.log('songs recibidas:', this.songs);
+  }
+  albumId(arg0: string, albumId: any) {
+    throw new Error('Method not implemented.');
   }
 
+  dismissModal() {
+    this.modalCtrl.dismiss();
+  }
 }
+

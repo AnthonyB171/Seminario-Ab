@@ -19,14 +19,14 @@ export class HomePage implements OnInit {
   coloroscuro = 'var(--color-oscuro)';
   coloractual = this.coloroscuro;
 
-  genres = [/* tus géneros */];
+  genres = [];
   tracks: any;
   albums: any;
   localArtists: any;
   song: any;
 
-  songs: any; // ✅ necesaria para el *ngFor
-  isLoading = false; // ✅ necesaria para *ngIf
+  songs: any;
+  isLoading = false;
 
   constructor(
     private storageService: StorageService,
@@ -36,61 +36,83 @@ export class HomePage implements OnInit {
   ) {}
 
   async ngOnInit() {
+    console.log('ngOnInit ejecutado ✅');
     this.isLoading = true;
-    this.loadAlbums();
-    this.loadTracks();
-    this.getlocalArtists();
+
     await this.loadStorageData();
     await this.simularCargaDatos();
+
+    await this.loadAlbums();
+    await this.loadTracks();
+    this.getlocalArtists();
+
     this.isLoading = false;
   }
 
   async loadStorageData() {
     const savedTheme = await this.storageService.get('theme');
-    if (savedTheme) this.coloractual = savedTheme;
+    if (savedTheme) {
+      this.coloractual = savedTheme;
+      console.log('Tema cargado desde Storage:', savedTheme);
+    }
   }
 
   async simularCargaDatos() {
+    console.log('Iniciando simulación de datos...');
     const data = await this.obtenerDatosSimulados();
-    console.log('Datos simulados: ', data);
+    console.log('Datos simulados:', data);
   }
 
   obtenerDatosSimulados() {
     return new Promise((resolve) => {
+      console.log('Esperando 1.5 segundos para simular...');
       setTimeout(() => {
-        resolve(['Champeta', 'Salsa', 'Reguetón']);
+        console.log('Resolviendo datos simulados...');
+        resolve(['Rock', 'Pop', 'Jazz']);
       }, 1500);
     });
   }
 
   async loadTracks() {
     this.tracks = await this.musicService.getTracks();
+    console.log('Pistas cargadas:', this.tracks);
   }
 
   async loadAlbums() {
     this.albums = await this.musicService.getalbums();
+    console.log('Álbumes cargados:', this.albums);
   }
 
   getlocalArtists() {
     this.localArtists = this.musicService.getlocalArtists();
+    console.log('Artistas locales:', this.localArtists?.artists);
   }
 
   async cambiarcolor() {
     this.coloractual = this.coloractual === this.coloroscuro ? this.colorclaro : this.coloroscuro;
     await this.storageService.set('theme', this.coloractual);
+    console.log('Tema cambiado a:', this.coloractual);
   }
 
   async showSongs(albumId: string): Promise<void> {
     try {
+      console.log('albumId:', albumId);
+
       this.songs = await this.musicService.getsongsByAlbum(albumId);
+      console.log('Canciones obtenidas:', this.songs);
+
       const modal = await this.modalController.create({
         component: SongsmodalPage,
-        componentProps: { songs: this.songs },
+        componentProps: {
+          songs: this.songs,
+          albumId: albumId
+        },
       });
+
       await modal.present();
+      console.log('Modal presentado correctamente ✅');
     } catch (error) {
       console.error('Error al obtener canciones del álbum:', error);
     }
-  
   }
 }
