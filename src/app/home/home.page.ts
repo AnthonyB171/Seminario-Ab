@@ -15,6 +15,7 @@ import { SongsmodalPage } from '../songsmodal/songsmodal.page';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePage implements OnInit {
+  song: { name: string } | null = null;
   colorclaro = 'var(--color-claro)';
   coloroscuro = 'var(--color-oscuro)';
   coloractual = this.coloroscuro;
@@ -100,6 +101,9 @@ export class HomePage implements OnInit {
       this.songs = await this.musicService.getsongsByAlbum(albumId);
       console.log('Canciones obtenidas:', this.songs);
 
+      // Mostrar la primera canción en el footer
+      this.song = this.songs?.[0] || null;
+
       const modal = await this.modalController.create({
         component: SongsmodalPage,
         componentProps: {
@@ -128,6 +132,9 @@ export class HomePage implements OnInit {
     try {
       const songs = await this.musicService.getTracksByArtist(artistId);
       console.log(`Canciones del artista ${artistId}:`, songs);
+
+      // Mostrar la primera canción del artista en el footer
+      this.song = songs?.[0] || null;
 
       const modal = await this.modalController.create({
         component: SongsmodalPage,
